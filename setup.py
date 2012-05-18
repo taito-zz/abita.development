@@ -4,21 +4,20 @@ from setuptools import setup
 
 setup(
     name='abita.development',
-    version='0.0',
+    version='0.1',
     description="",
     long_description=open("README.rst").read(),
     # Get more strings from
     # http://pypi.python.org/pypi?:action=list_classifiers
     classifiers=[
         "Framework :: Plone",
-        "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Framework :: Plone :: 4.3",
         "Programming Language :: Python",
     ],
     keywords='',
-    author='Hexagon IT',
-    author_email='oss@hexagonit.fi',
+    author='ABITA OY',
+    author_email='taito.horiuchi@abita.fi',
     url='http://abita.fi/',
     license='BSD',
     packages=find_packages(exclude=['ez_setup']),
