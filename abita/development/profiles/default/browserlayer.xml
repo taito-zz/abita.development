@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    interface="abita.development.browser.interfaces.IAbitaDevelopmentLayer"
+    name="abita.development"
+    />
+</layers>
