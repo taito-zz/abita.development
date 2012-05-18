@@ -54,7 +54,7 @@ class TestDevelopmentWorkView(IntegrationTestCase):
         from abita.development.browser.interfaces import IAbitaDevelopmentLayer
         self.assertEqual(
             getattr(view, 'grokcore.view.directive.layer'),
-            ISllTemplatesLayer
+            IAbitaDevelopmentLayer
         )
 
     def test_view__name(self):
