@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<registry>
+  <record name="abita.development.rate">
+    <field type="plone.registry.field.Float">
+      <title>Default Rate</title>
+      <description>Default rate per 10 minutes.</description>
+    </field>
+    <value>6.0</value>
+  </record>
+</registry>

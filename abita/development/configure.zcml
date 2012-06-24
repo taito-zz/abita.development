@@ -14,9 +14,17 @@
   <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
-    description="Installs the abita.development package"
+    description="Installs abita.development package"
     directory="profiles/default"
     name="default"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    title="abita.development"
+    />
+
+  <genericsetup:registerProfile
+    description="Uninstalls abita.development package"
+    directory="profiles/uninstall"
+    name="uninstall"
     provides="Products.GenericSetup.interfaces.EXTENSION"
     title="abita.development"
     />
