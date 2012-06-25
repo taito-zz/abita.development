@@ -24,7 +24,8 @@ class DevelopmentWorkView(grok.View):
     grok.template('development-work')
 
     def getCurrentUrl(self):
-        return getMultiAdapter((self.context, self.request), name=u'plone').getCurrentUrl()
+        return getMultiAdapter(
+            (self.context, self.request), name=u'plone').getCurrentUrl()
 
     def items(self):
         context = aq_inner(self.context)
@@ -56,8 +57,10 @@ class DevelopmentWorkView(grok.View):
                 {
                     'title': item.Title(),
                     'description': item.Description(),
-                    'start': ploneview.toLocalizedTime(item.start, long_format=True),
-                    'end': ploneview.toLocalizedTime(item.end, long_format=True),
+                    'start': ploneview.toLocalizedTime(
+                        item.start, long_format=True),
+                    'end': ploneview.toLocalizedTime(
+                        item.end, long_format=True),
                     'duration': int(minutes),
                 }
             )
@@ -93,6 +96,8 @@ class DevelopmentWorkView(grok.View):
         return self.pricing(price)
 
     def pricing(self, price):
-        price = Decimal(str(price)).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
-        price = Decimal(price).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
+        price = Decimal(
+            str(price)).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
+        price = Decimal(
+            price).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
         return '{0} EUR'.format(price)

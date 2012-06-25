@@ -68,7 +68,7 @@ class TestDevelopmentWorkView(IntegrationTestCase):
         view = self.createView()
         self.assertEqual(
             getattr(view, 'grokcore.security.directive.require'),
-            ['cmf.ManagePortal']
+            ['cmf.ModifyPortalContent']
         )
 
     def test_view__template(self):

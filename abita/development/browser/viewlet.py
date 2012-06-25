@@ -1,18 +1,11 @@
-from Acquisition import aq_inner
 from Products.ATContentTypes.interfaces.folder import IATFolder
-from Products.CMFCore.utils import getToolByName
-from abita.development import _
 from abita.development.browser.interfaces import IAbitaDevelopmentLayer
 from abita.development.interfaces import IManageDevWork
 from abita.development.interfaces import IRate
 from five import grok
 from plone.app.layout.globals.interfaces import IViewView
 from plone.app.layout.viewlets.interfaces import IAboveContentTitle
-from plone.app.viewletmanager.manager import OrderedViewletManager
-from plone.registry.interfaces import IRegistry
 from zope.annotation.interfaces import IAnnotations
-from zope.component import getMultiAdapter
-from zope.component import getUtility
 
 
 grok.templatedir('viewlets')

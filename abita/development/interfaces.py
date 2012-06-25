@@ -10,4 +10,3 @@ class IRate(Interface):
 
     def __call__():
         """Returns rate."""
-

@@ -15,8 +15,7 @@ import re
 import transaction
 import unittest2 as unittest
 
-FLAGS = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS  # | doctest.REPORT_NDIFF | doctest.REPORT_ONLY_FIRST_FAILURE
-
+FLAGS = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
 CHECKER = renormalizing.RENormalizing([
     # Normalize the generated UUID values to always compare equal.
     (re.compile(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'), '<UUID>'),
