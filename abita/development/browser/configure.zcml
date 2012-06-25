@@ -24,7 +24,7 @@
 
   <browser:page
     name="is-dev-work-managed"
-    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    for="*"
     class=".miscellaneous.Miscellaneous"
     permission="cmf.ManagePortal"
     attribute="is_dev_work_managed"
@@ -33,7 +33,7 @@
 
   <browser:page
     name="is-dev-work-unmanaged"
-    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    for="*"
     class=".miscellaneous.Miscellaneous"
     permission="cmf.ManagePortal"
     attribute="is_dev_work_unmanaged"
