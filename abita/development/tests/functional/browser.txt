@@ -35,7 +35,15 @@ Manage Development Work::
     >>> 'Event03' in browser.contents
     True
 
-Update value::
+Update with non-numerical value::
+
+    >>> browser.getControl(name="rate").value = 'AAA'
+    >>> browser.getControl(name="form.button.Update").click()
+
+    >>> 'value="6.0"' in browser.contents
+    True
+
+Update with numerical value::
 
     >>> browser.getControl(name="rate").value = '5.0'
     >>> browser.getControl(name="form.button.Update").click()

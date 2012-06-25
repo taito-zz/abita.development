@@ -8,5 +8,5 @@ class IManageDevWork(Interface):
 class IRate(Interface):
     """Adapter interface to IATFolder"""
 
-    def __call__():
+    def __call__():  # pragma: no cover
         """Returns rate."""
