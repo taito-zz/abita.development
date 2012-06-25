@@ -12,6 +12,74 @@ class TestCase(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.failUnless(installer.isProductInstalled('abita.development'))
 
+    def test_actions__object_buttons__manage_dev_work__title(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertEqual(action.title, 'Manage Development Work')
+
+    def test_actions__object_buttons__manage_dev_work__description(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertEqual(action.description, 'Manage amount of development work.')
+
+    def test_actions__object_buttons__manage_dev_work__url_expr(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertEqual(
+            action.getProperty('url_expr'),
+            'string:${globals_view/getCurrentObjectUrl}/@@manage-dev-work')
+
+    def test_actions__object_buttons__manage_dev_work__available_expr(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertEqual(
+            action.getProperty('available_expr'),
+            'python: not object.restrictedTraverse("is-dev-work-managed")()')
+
+    def test_actions__object_buttons__manage_dev_work__permissions(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertEqual(action.getProperty('permissions'), ('Manage portal',))
+
+    def test_actions__object_buttons__manage_dev_work__visible(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').manage_dev_work
+        self.assertTrue(action.getProperty('visible'))
+
+    def test_actions__object_buttons__unmanage_dev_work__title(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertEqual(action.title, 'Unmanage Development Work')
+
+    def test_actions__object_buttons__unmanage_dev_work__description(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertEqual(action.description, 'Unmanage amount of development work.')
+
+    def test_actions__object_buttons__unmanage_dev_work__url_expr(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertEqual(
+            action.getProperty('url_expr'),
+            'string:${globals_view/getCurrentObjectUrl}/@@unmanage-dev-work')
+
+    def test_actions__object_buttons__unmanage_dev_work__available_expr(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertEqual(
+            action.getProperty('available_expr'),
+            'python: object.restrictedTraverse("is-dev-work-managed")()')
+
+    def test_actions__object_buttons__unmanage_dev_work__permissions(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertEqual(action.getProperty('permissions'), ('Manage portal',))
+
+    def test_actions__object_buttons__unmanage_dev_work__visible(self):
+        actions = getToolByName(self.portal, 'portal_actions')
+        action = getattr(actions, 'object_buttons').unmanage_dev_work
+        self.assertTrue(action.getProperty('visible'))
+
     def test_browserlayer(self):
         from abita.development.browser.interfaces import IAbitaDevelopmentLayer
         from plone.browserlayer import utils
