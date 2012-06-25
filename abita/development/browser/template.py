@@ -3,6 +3,7 @@ from Products.ATContentTypes.interfaces.event import IATEvent
 from Products.ATContentTypes.interfaces.folder import IATFolder
 from Products.CMFCore.utils import getToolByName
 from abita.development.browser.interfaces import IAbitaDevelopmentLayer
+from abita.development.interfaces import IRate
 from datetime import timedelta
 from decimal import Decimal
 from decimal import ROUND_HALF_UP
@@ -19,8 +20,11 @@ class DevelopmentWorkView(grok.View):
     grok.context(IATFolder)
     grok.layer(IAbitaDevelopmentLayer)
     grok.name('development-work')
-    grok.require('cmf.ManagePortal')
+    grok.require('cmf.ModifyPortalContent')
     grok.template('development-work')
+
+    def getCurrentUrl(self):
+        return getMultiAdapter((self.context, self.request), name=u'plone').getCurrentUrl()
 
     def items(self):
         context = aq_inner(self.context)
@@ -73,16 +77,19 @@ class DevelopmentWorkView(grok.View):
         else:
             return '{0} minutes'.format(minutes)
 
+    def rate(self):
+        return IRate(self.context)()
+
     def total_without_alv(self):
-        price = self.total_minutes() * 5 / 10
+        price = self.total_minutes() * self.rate() / 10
         return self.pricing(price)
 
     def total_alv(self):
-        price = self.total_minutes() * 5 / 10 * 0.23
+        price = self.total_minutes() * self.rate() / 10 * 0.23
         return self.pricing(price)
 
     def total_with_alv(self):
-        price = self.total_minutes() * 5 / 10 * 1.23
+        price = self.total_minutes() * self.rate() / 10 * 1.23
         return self.pricing(price)
 
     def pricing(self, price):

@@ -34,7 +34,7 @@ class TestCase(IntegrationTestCase):
         action = getattr(actions, 'object_buttons').manage_dev_work
         self.assertEqual(
             action.getProperty('available_expr'),
-            'python: not object.restrictedTraverse("is-dev-work-managed")()')
+            'python: object.restrictedTraverse("is-dev-work-unmanaged")()')
 
     def test_actions__object_buttons__manage_dev_work__permissions(self):
         actions = getToolByName(self.portal, 'portal_actions')
@@ -112,6 +112,20 @@ class TestCase(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         installer.uninstallProducts(['abita.development'])
         self.failIf(installer.isProductInstalled('abita.development'))
+
+    def test_uninstall__actions__object_buttons__manage_dev_work(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['abita.development'])
+        actions = getToolByName(self.portal, 'portal_actions')
+        self.assertRaises(
+            AttributeError, lambda: getattr(actions, 'object_buttons').manage_dev_work)
+
+    def test_uninstall__actions__object_buttons__unmanage_dev_work(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['abita.development'])
+        actions = getToolByName(self.portal, 'portal_actions')
+        self.assertRaises(
+            AttributeError, lambda: getattr(actions, 'object_buttons').unmanage_dev_work)
 
     def test_uninstall__browserlayer(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')

@@ -3,4 +3,101 @@ Log in as the portal owner::
     >>> from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
     >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
-Continue your test::
+Go to Folder::
+
+    >>> browser.open(folder_url)
+
+Manage Development Work::
+
+    >>> 'Manage Development Work' in browser.contents
+    True
+    >>> 'Unmanage Development Work' in browser.contents
+    False
+    >>> 'id="rate-per-ten-minutes"' in browser.contents
+    False
+
+    >>> browser.getLink('Manage Development Work').click()
+
+    >>> 'Manage Development Work' in browser.contents
+    False
+    >>> 'Unmanage Development Work' in browser.contents
+    True
+    >>> 'id="rate-per-ten-minutes"' in browser.contents
+    True
+
+    >>> 'value="6.0"' in browser.contents
+    True
+
+    >>> 'Event01' in browser.contents
+    True
+    >>> 'Event02' in browser.contents
+    True
+    >>> 'Event03' in browser.contents
+    True
+
+Update value::
+
+    >>> browser.getControl(name="rate").value = '5.0'
+    >>> browser.getControl(name="form.button.Update").click()
+
+    >>> 'value="5.0"' in browser.contents
+    True
+
+    >>> '49 hours 20 minutes' in browser.contents
+    True
+    >>> '1480.00 EUR' in browser.contents
+    True
+    >>> '340.40 EUR' in browser.contents
+    True
+    >>> '1820.40 EUR' in browser.contents
+    True
+    >>> '5.0 EUR / 10 min' in browser.contents
+    True
+
+Unmanage Development Work::
+
+    >>> browser.getLink('Unmanage Development Work').click()
+
+    >>> 'Manage Development Work' in browser.contents
+    True
+    >>> 'Unmanage Development Work' in browser.contents
+    False
+    >>> 'id="rate-per-ten-minutes"' in browser.contents
+    False
+
+Manage Development Work again::
+
+    >>> browser.getLink('Manage Development Work').click()
+
+    >>> browser.getLink('Log out').click()
+
+Log in as Site Administrator::
+
+    >>> browser.login(user2, user2)
+
+Go to Folder::
+
+    >>> browser.open(folder_url)
+
+    >>> 'id="rate-per-ten-minutes"' in browser.contents
+    False
+    >>> 'value="5.0"' in browser.contents
+    False
+
+    >>> 'Event01' in browser.contents
+    True
+    >>> 'Event02' in browser.contents
+    True
+    >>> 'Event03' in browser.contents
+    True
+
+    >>> '49 hours 20 minutes' in browser.contents
+    True
+    >>> '1480.00 EUR' in browser.contents
+    True
+    >>> '340.40 EUR' in browser.contents
+    True
+    >>> '1820.40 EUR' in browser.contents
+    True
+    >>> '5.0 EUR / 10 min' in browser.contents
+    True

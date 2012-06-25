@@ -1,3 +1,5 @@
+from DateTime import DateTime
+from Products.CMFCore.utils import getToolByName
 from abita.development.tests.base import FUNCTIONAL_TESTING
 from hexagonit.testing.browser import Browser
 from plone.app.testing import setRoles
@@ -39,6 +41,45 @@ def setUp(self):
     portal.error_log._ignored_exceptions = ()
 
     setRoles(portal, TEST_USER_ID, ['Manager'])
+
+    folder = portal[
+        portal.invokeFactory(
+            'Folder',
+            'folder',
+            title='Folder')]
+    folder.reindexObject()
+    self.globs['folder_url'] = folder.absolute_url()
+
+    ids = [1, 2]
+    for oid in ids:
+        obj = folder[
+            folder.invokeFactory(
+                'Event',
+                'event0{0}'.format(oid),
+                title='Event0{0}'.format(oid),
+                description='Description of Event0{0}'.format(oid),
+                startDate=DateTime() + oid - 1,
+                endDate=DateTime() + oid,
+            )
+        ]
+        obj.reindexObject()
+    event03 = folder[
+        folder.invokeFactory(
+            'Event',
+            'event03',
+            title='Event03',
+            description='Description of Event03',
+            startDate=DateTime('2012/5/6 10:30:00 am'),
+            endDate=DateTime('2012/5/6 11:50:00 am'),
+        )
+    ]
+    event03.reindexObject()
+
+    user2 = 'test_user_2_'
+    regtool = getToolByName(portal, 'portal_registration')
+    regtool.addMember(user2, user2)
+    setRoles(portal, user2, ['Site Administrator'])
+    self.globs['user2'] = user2
 
     transaction.commit()
 

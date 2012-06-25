@@ -29,4 +29,6 @@
     title="abita.development"
     />
 
+  <include package=".browser" />
+
 </configure>

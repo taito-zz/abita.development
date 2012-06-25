@@ -1,0 +1,23 @@
+<div 
+  id="rate-per-ten-minutes"
+  i18n:domain="abita.development"
+  tal:condition="viewlet/available"
+  >
+  <form
+    method="post"
+    tal:attributes="action view/getCurrentUrl">
+    <label i18n:translate="">Rate per 10 minutes</label>
+    <input
+      id="rate"
+      name="rate"
+      type="text"
+      size="4"
+      tal:attributes="value viewlet/rate"
+      />
+    <input
+      id="standalone"
+      name="form.button.Update"
+      type="Submit"
+      />
+  </form>
+</div>

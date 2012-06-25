@@ -36,7 +36,7 @@
             <dt i18n:translate="">Total Time</dt>
             <dd tal:content="view/total_time" />
             <dt i18n:translate="">Total Charge</dt>
-            <dl>
+            <dd>
               <table>
                 <thead>
                   <tr>
@@ -53,6 +53,11 @@
                   </tr>
                 </tbody>
               </table>
+            </dd>
+            <dt i18n:translate="">Charging Rate</dt>
+            <dd>
+              <span tal:replace="view/rate" /> EUR / 10 min
+            </dd>
           </dl>
         </section>
         <div tal:replace="structure provider:plone.belowcontentbody" />

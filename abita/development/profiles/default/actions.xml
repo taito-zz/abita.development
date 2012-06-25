@@ -8,7 +8,7 @@
    <property
       name="url_expr">string:${globals_view/getCurrentObjectUrl}/@@manage-dev-work</property>
    <property
-      name="available_expr">python: not object.restrictedTraverse("is-dev-work-managed")()</property>
+      name="available_expr">python: object.restrictedTraverse("is-dev-work-unmanaged")()</property>
    <property name="permissions">
     <element value="Manage portal"/>
    </property>

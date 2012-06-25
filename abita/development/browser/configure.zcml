@@ -1,0 +1,43 @@
+<configure
+    i18n_domain="abita.development"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns="http://namespaces.zope.org/zope"
+    >
+
+  <browser:page
+    name="manage-dev-work"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    class=".miscellaneous.Miscellaneous"
+    permission="cmf.ManagePortal"
+    attribute="manage_dev_work"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    />
+
+  <browser:page
+    name="unmanage-dev-work"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    class=".miscellaneous.Miscellaneous"
+    permission="cmf.ManagePortal"
+    attribute="unmanage_dev_work"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    />
+
+  <browser:page
+    name="is-dev-work-managed"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    class=".miscellaneous.Miscellaneous"
+    permission="cmf.ManagePortal"
+    attribute="is_dev_work_managed"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    />
+
+  <browser:page
+    name="is-dev-work-unmanaged"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    class=".miscellaneous.Miscellaneous"
+    permission="cmf.ManagePortal"
+    attribute="is_dev_work_unmanaged"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    />
+
+</configure>
