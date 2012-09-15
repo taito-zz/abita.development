@@ -1,5 +1,5 @@
-from abita.development.tests.base import IntegrationTestCase
 from Products.CMFCore.utils import getToolByName
+from abita.development.tests.base import IntegrationTestCase
 
 
 class TestCase(IntegrationTestCase):

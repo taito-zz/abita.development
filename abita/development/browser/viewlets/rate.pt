@@ -1,8 +1,7 @@
-<div 
+<div
   id="rate-per-ten-minutes"
   i18n:domain="abita.development"
-  tal:condition="viewlet/available"
-  >
+  tal:condition="viewlet/available">
   <form
     method="post"
     tal:attributes="action view/getCurrentUrl">

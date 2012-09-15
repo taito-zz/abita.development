@@ -1,43 +1,42 @@
 <configure
-    i18n_domain="abita.development"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns="http://namespaces.zope.org/zope"
-    >
+  i18n_domain="abita.development"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns="http://namespaces.zope.org/zope">
 
   <browser:page
-    name="manage-dev-work"
-    for="Products.ATContentTypes.interfaces.folder.IATFolder"
-    class=".miscellaneous.Miscellaneous"
-    permission="cmf.ManagePortal"
     attribute="manage_dev_work"
-    layer=".interfaces.IAbitaDevelopmentLayer"
-    />
-
-  <browser:page
-    name="unmanage-dev-work"
+    class=".miscellaneous.Miscellaneous"
     for="Products.ATContentTypes.interfaces.folder.IATFolder"
-    class=".miscellaneous.Miscellaneous"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    name="manage-dev-work"
     permission="cmf.ManagePortal"
+    />
+
+  <browser:page
     attribute="unmanage_dev_work"
+    class=".miscellaneous.Miscellaneous"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
     layer=".interfaces.IAbitaDevelopmentLayer"
+    name="unmanage-dev-work"
+    permission="cmf.ManagePortal"
     />
 
   <browser:page
-    name="is-dev-work-managed"
-    for="*"
-    class=".miscellaneous.Miscellaneous"
-    permission="cmf.ManagePortal"
     attribute="is_dev_work_managed"
+    class=".miscellaneous.Miscellaneous"
+    for="*"
     layer=".interfaces.IAbitaDevelopmentLayer"
+    name="is-dev-work-managed"
+    permission="cmf.ManagePortal"
     />
 
   <browser:page
-    name="is-dev-work-unmanaged"
-    for="*"
-    class=".miscellaneous.Miscellaneous"
-    permission="cmf.ManagePortal"
     attribute="is_dev_work_unmanaged"
+    class=".miscellaneous.Miscellaneous"
+    for="*"
     layer=".interfaces.IAbitaDevelopmentLayer"
+    name="is-dev-work-unmanaged"
+    permission="cmf.ManagePortal"
     />
 
 </configure>

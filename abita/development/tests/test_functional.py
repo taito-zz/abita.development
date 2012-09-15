@@ -13,7 +13,7 @@ import manuel.doctest
 import manuel.testing
 import re
 import transaction
-import unittest2 as unittest
+import unittest
 
 FLAGS = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
 CHECKER = renormalizing.RENormalizing([

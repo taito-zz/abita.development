@@ -1,6 +1,6 @@
+from abita.development.tests.base import IntegrationTestCase
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
-from abita.development.tests.base import IntegrationTestCase
 
 import mock
 
