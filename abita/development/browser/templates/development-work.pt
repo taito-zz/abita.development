@@ -11,19 +11,25 @@
         <h1 class="documentFirstHeading" tal:content="context/title" />
         <div tal:replace="structure provider:plone.belowcontenttitle" />
         <section tal:condition="view/items">
-          <table>
+          <table class="listing">
             <thead>
               <tr>
-                <th i18n:translate="">Title</th>
+                <th i18n:translate="">Date</th>
                 <th i18n:translate="">Description</th>
                 <th i18n:translate="">Start</th>
                 <th i18n:translate="">End</th>
-                <th i18n:translate="">Duration (min)</th>
+                <th i18n:translate="">Minutes</th>
               </tr>
             </thead>
             <tbody>
               <tr tal:repeat="item view/items">
-                <td tal:content="item/title" />
+                <td>
+                  <a
+                    tal:attributes="
+                      href item/url;
+                      title item/title"
+                    tal:content="item/date" />
+                </td>
                 <td tal:content="item/description" />
                 <td tal:content="item/start" />
                 <td tal:content="item/end" />
@@ -36,7 +42,7 @@
             <dd tal:content="view/total_time" />
             <dt i18n:translate="">Total Charge</dt>
             <dd>
-              <table>
+              <table class="listing">
                 <thead>
                   <tr>
                     <th i18n:translate="">ALV 0%</th>

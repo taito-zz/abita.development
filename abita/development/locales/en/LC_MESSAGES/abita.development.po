@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-17 06:33+0000\n"
+"POT-Creation-Date: 2012-10-15 21:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,3 +13,68 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abita.development\n"
+
+#: ./browser/templates/development-work.pt:49
+msgid "ALV"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:48
+msgid "ALV 0%"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:50
+msgid "ALV 23%"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:62
+msgid "Charging Rate"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:17
+msgid "Date"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:18
+msgid "Description"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:20
+msgid "End"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Manage Development Work"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Manage amount of development work."
+msgstr ""
+
+#: ./browser/templates/development-work.pt:21
+msgid "Minutes"
+msgstr ""
+
+#: ./browser/viewlets/rate.pt:8
+msgid "Rate per 10 minutes"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:19
+msgid "Start"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:43
+msgid "Total Charge"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:41
+msgid "Total Time"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Unmanage Development Work"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Unmanage amount of development work."
+msgstr ""
+

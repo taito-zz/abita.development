@@ -9,6 +9,7 @@ from decimal import Decimal
 from decimal import ROUND_HALF_UP
 from five import grok
 from plone.app.contentlisting.interfaces import IContentListing
+from plone.memoize.instance import memoize
 from zope.component import getMultiAdapter
 
 
@@ -27,6 +28,10 @@ class DevelopmentWorkView(grok.View):
         return getMultiAdapter(
             (self.context, self.request), name=u'plone').getCurrentUrl()
 
+    @memoize
+    def _ulocalized_time(self):
+        return getToolByName(self.context, 'translation_service').ulocalized_time
+
     def items(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -35,17 +40,12 @@ class DevelopmentWorkView(grok.View):
                 'depth': 1,
                 'query': '/'.join(context.getPhysicalPath()),
             },
-            'object_provides': [
-                IATEvent.__identifier__,
-            ],
+            'object_provides': [IATEvent.__identifier__, ],
             'sort_on': 'end',
             'sort_order': 'descending',
         }
-        ploneview = getMultiAdapter(
-            (context, self.request),
-            name=u'plone'
-        )
         res = []
+        ulocalize = self._ulocalized_time()
         for item in IContentListing(catalog(query)):
             difference = timedelta(item.end - item.start)
             days = difference.days
@@ -53,17 +53,15 @@ class DevelopmentWorkView(grok.View):
             seconds = difference.seconds
             if seconds:
                 minutes += seconds / 60
-            res.append(
-                {
-                    'title': item.Title(),
-                    'description': item.Description(),
-                    'start': ploneview.toLocalizedTime(
-                        item.start, long_format=True),
-                    'end': ploneview.toLocalizedTime(
-                        item.end, long_format=True),
-                    'duration': int(minutes),
-                }
-            )
+            res.append({
+                'title': item.Title(),
+                'description': item.Description(),
+                'url': item.getURL(),
+                'date': ulocalize(item.start, context=self.context),
+                'start': ulocalize(item.start, time_only=True, context=self.context),
+                'end': ulocalize(item.end, time_only=True, context=self.context),
+                'duration': int(minutes),
+            })
         return res
 
     def total_minutes(self):
@@ -76,9 +74,9 @@ class DevelopmentWorkView(grok.View):
         hours = int(self.total_minutes() // 60)
         minutes = int((self.total_minutes() / 60 - hours) * 60)
         if hours:
-            return '{0} hours {1} minutes'.format(hours, minutes)
+            return '{} hours {} minutes'.format(hours, minutes)
         else:
-            return '{0} minutes'.format(minutes)
+            return '{} minutes'.format(minutes)
 
     def rate(self):
         return IRate(self.context)()
@@ -100,4 +98,4 @@ class DevelopmentWorkView(grok.View):
             str(price)).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
         price = Decimal(
             price).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
-        return '{0} EUR'.format(price)
+        return '{} EUR'.format(price)
