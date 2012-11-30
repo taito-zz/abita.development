@@ -6,66 +6,68 @@
   xmlns:metal="http://xml.zope.org/namespaces/metal"
   xmlns:tal="http://xml.zope.org/namespaces/tal">
   <body>
-    <metal:main fill-slot="main">
-        <div tal:replace="structure provider:plone.abovecontenttitle" />
-        <h1 class="documentFirstHeading" tal:content="context/title" />
-        <div tal:replace="structure provider:plone.belowcontenttitle" />
-        <section tal:condition="view/items">
-          <table class="listing">
-            <thead>
-              <tr>
-                <th i18n:translate="">Date</th>
-                <th i18n:translate="">Description</th>
-                <th i18n:translate="">Start</th>
-                <th i18n:translate="">End</th>
-                <th i18n:translate="">Minutes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr tal:repeat="item view/items">
-                <td>
-                  <a
-                    tal:attributes="
-                      href item/url;
-                      title item/title"
-                    tal:content="item/date" />
-                </td>
-                <td tal:content="item/description" />
-                <td tal:content="item/start" />
-                <td tal:content="item/end" />
-                <td tal:content="item/duration" />
-              </tr>
-            </tbody>
-          </table>
-          <dl>
-            <dt i18n:translate="">Total Time</dt>
-            <dd tal:content="view/total_time" />
-            <dt i18n:translate="">Total Charge</dt>
-            <dd>
-              <table class="listing">
-                <thead>
-                  <tr>
-                    <th i18n:translate="">ALV 0%</th>
-                    <th i18n:translate="">ALV</th>
-                    <th i18n:translate="">ALV 23%</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td tal:content="view/total_without_alv" />
-                    <td tal:content="view/total_alv" />
-                    <td tal:content="view/total_with_alv" />
-                  </tr>
-                </tbody>
-              </table>
-            </dd>
-            <dt i18n:translate="">Charging Rate</dt>
-            <dd>
-              <span tal:replace="view/rate" /> EUR / 10 min
-            </dd>
-          </dl>
-        </section>
-        <div tal:replace="structure provider:plone.belowcontentbody" />
-    </metal:main>
+    <metal:content-title fill-slot="content-title">
+      <h1 class="documentFirstHeading" tal:content="view/title">Title</h1>
+    </metal:content-title>
+    <metal:content-description fill-slot="content-description">
+      <div class="documentDescription" tal:content="view/description">Description</div>
+    </metal:content-description>
+    <metal:content-core fill-slot="content-core">
+      <section tal:condition="view/items">
+        <table class="listing">
+          <thead>
+            <tr>
+              <th i18n:translate="">Date</th>
+              <th i18n:translate="">Description</th>
+              <th i18n:translate="">Start</th>
+              <th i18n:translate="">End</th>
+              <th i18n:translate="">Minutes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tal:repeat="item view/items">
+              <td>
+                <a
+                  tal:attributes="
+                    href item/url;
+                    title item/title"
+                  tal:content="item/date" />
+              </td>
+              <td tal:content="item/description" />
+              <td tal:content="item/start" />
+              <td tal:content="item/end" />
+              <td tal:content="item/duration" />
+            </tr>
+          </tbody>
+        </table>
+        <dl>
+          <dt i18n:translate="">Total Time</dt>
+          <dd tal:content="view/total_time" />
+          <dt i18n:translate="">Total Charge</dt>
+          <dd>
+            <table class="listing">
+              <thead>
+                <tr>
+                  <th i18n:translate="">VAT 0%</th>
+                  <th i18n:translate="">VAT</th>
+                  <th i18n:translate="">VAT <tal:vat i18n:name="vat">23</tal:vat>%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td tal:content="view/total_without_vat" />
+                  <td tal:content="view/total_vat" />
+                  <td tal:content="view/total_with_vat" />
+                </tr>
+              </tbody>
+            </table>
+          </dd>
+          <dt i18n:translate="">Charging Rate</dt>
+          <dd>
+            <span tal:replace="view/rate" /> EUR / 10 min
+          </dd>
+        </dl>
+      </section>
+    </metal:content-core>
   </body>
 </html>

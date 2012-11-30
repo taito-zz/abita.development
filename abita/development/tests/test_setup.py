@@ -85,28 +85,45 @@ class TestCase(IntegrationTestCase):
         from plone.browserlayer import utils
         self.failUnless(IAbitaDevelopmentLayer in utils.registered_layers())
 
-    def get_record_rate(self):
+    def get_record(self, name):
         from zope.component import getUtility
         from plone.registry.interfaces import IRegistry
         registry = getUtility(IRegistry)
-        return registry.records.get('abita.development.rate')
+        return registry.records.get(name)
 
     def test_registry_record__rate__field__instance(self):
-        record = self.get_record_rate()
+        record = self.get_record('abita.development.rate')
         from plone.registry.field import Float
         self.assertIsInstance(record.field, Float)
 
     def test_registry_record__rate__field__title(self):
-        record = self.get_record_rate()
+        record = self.get_record('abita.development.rate')
         self.assertEqual(record.field.title, u'Default Rate')
 
     def test_registry_record__rate__field__description(self):
-        record = self.get_record_rate()
+        record = self.get_record('abita.development.rate')
         self.assertEqual(record.field.description, u'Default rate per 10 minutes.')
 
     def test_registry_record__rate__value(self):
-        record = self.get_record_rate()
-        self.assertEqual(record.value, 6.0)
+        record = self.get_record('abita.development.rate')
+        self.assertEqual(record.value, 7.0)
+
+    def test_registry_record__vat__field__instance(self):
+        record = self.get_record('abita.development.vat')
+        from plone.registry.field import Float
+        self.assertIsInstance(record.field, Float)
+
+    def test_registry_record__vat__field__title(self):
+        record = self.get_record('abita.development.vat')
+        self.assertEqual(record.field.title, u'VAT')
+
+    def test_registry_record__vat__field__description(self):
+        record = self.get_record('abita.development.vat')
+        self.assertEqual(record.field.description, u'')
+
+    def test_registry_record__vat__value(self):
+        record = self.get_record('abita.development.vat')
+        self.assertEqual(record.value, 23.0)
 
     def test_uninstall__package(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
@@ -143,4 +160,15 @@ class TestCase(IntegrationTestCase):
         self.assertRaises(
             KeyError,
             lambda: registry['abita.development.rate']
+        )
+
+    def test_uninstall__registry_vat(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['abita.development'])
+        from zope.component import getUtility
+        from plone.registry.interfaces import IRegistry
+        registry = getUtility(IRegistry)
+        self.assertRaises(
+            KeyError,
+            lambda: registry['abita.development.vat']
         )

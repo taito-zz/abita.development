@@ -1,11 +1,21 @@
-Log in as the portal owner::
+Log in as Manager::
 
-    >>> from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
     >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 Go to Folder::
 
     >>> browser.open(folder_url)
+    >>> print browser.bycss('.documentFirstHeading')
+    --- 1 ---
+    <h1 id="parent-fieldname-title" class="documentFirstHeading kssattr-atfieldname-title kssattr-templateId-kss_generic_macros kssattr-macro-title-field-view">
+    Folder
+    </h1>
+
+    >>> print browser.bycss('.documentDescription')
+    --- 1 ---
+    <div id="parent-fieldname-description" class="documentDescription kssattr-atfieldname-description kssattr-templateId-kss_generic_macros kssattr-macro-description-field-view">
+    Description of Folder
+    </div>
 
 Manage Development Work::
 
@@ -25,7 +35,7 @@ Manage Development Work::
     >>> 'id="rate-per-ten-minutes"' in browser.contents
     True
 
-    >>> 'value="6.0"' in browser.contents
+    >>> 'value="7.0"' in browser.contents
     True
 
     >>> 'Event01' in browser.contents
@@ -40,7 +50,7 @@ Update with non-numerical value::
     >>> browser.getControl(name="rate").value = 'AAA'
     >>> browser.getControl(name="form.button.Update").click()
 
-    >>> 'value="6.0"' in browser.contents
+    >>> 'value="7.0"' in browser.contents
     True
 
 Update with numerical value::

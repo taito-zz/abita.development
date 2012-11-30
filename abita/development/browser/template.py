@@ -10,7 +10,8 @@ from decimal import ROUND_HALF_UP
 from five import grok
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.memoize.instance import memoize
-from zope.component import getMultiAdapter
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 
 grok.templatedir('templates')
@@ -24,9 +25,11 @@ class DevelopmentWorkView(grok.View):
     grok.require('cmf.ModifyPortalContent')
     grok.template('development-work')
 
-    def getCurrentUrl(self):
-        return getMultiAdapter(
-            (self.context, self.request), name=u'plone').getCurrentUrl()
+    def title(self):
+        return self.context.Title()
+
+    def description(self):
+        return self.context.Description()
 
     @memoize
     def _ulocalized_time(self):
@@ -81,16 +84,20 @@ class DevelopmentWorkView(grok.View):
     def rate(self):
         return IRate(self.context)()
 
-    def total_without_alv(self):
+    @property
+    def vat(self):
+        return getUtility(IRegistry)['abita.development.vat']
+
+    def total_without_vat(self):
         price = self.total_minutes() * self.rate() / 10
         return self.pricing(price)
 
-    def total_alv(self):
-        price = self.total_minutes() * self.rate() / 10 * 0.23
+    def total_vat(self):
+        price = self.total_minutes() * self.rate() / 10 * self.vat / 100
         return self.pricing(price)
 
-    def total_with_alv(self):
-        price = self.total_minutes() * self.rate() / 10 * 1.23
+    def total_with_vat(self):
+        price = self.total_minutes() * self.rate() / 10 * (100.0 + self.vat) / 100
         return self.pricing(price)
 
     def pricing(self, price):

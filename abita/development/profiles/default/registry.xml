@@ -5,6 +5,12 @@
       <title>Default Rate</title>
       <description>Default rate per 10 minutes.</description>
     </field>
-    <value>6.0</value>
+    <value>7.0</value>
+  </record>
+  <record name="abita.development.vat">
+    <field type="plone.registry.field.Float">
+      <title>VAT</title>
+    </field>
+    <value>23.0</value>
   </record>
 </registry>

@@ -4,7 +4,7 @@
   tal:condition="viewlet/available">
   <form
     method="post"
-    tal:attributes="action view/getCurrentUrl">
+    tal:attributes="action context/plone_context_state/current_base_url">
     <label i18n:translate="">Rate per 10 minutes</label>
     <input
       id="rate"

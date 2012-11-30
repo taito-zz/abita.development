@@ -7,19 +7,16 @@ setup(
     version='0.2',
     description="",
     long_description=open("README.rst").read(),
-    # Get more strings from
-    # http://pypi.python.org/pypi?:action=list_classifiers
     classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 4.2",
-        "Framework :: Plone :: 4.3",
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7"],
     keywords='',
     author='ABITA OY',
     author_email='taito.horiuchi@abita.fi',
-    url='http://abita.fi/',
+    url='https://github.com/taito/abita.development',
     license='BSD',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['abita'],
@@ -27,11 +24,9 @@ setup(
     zip_safe=False,
     install_requires=[
         'five.grok',
+        'five.pt',
         'hexagonit.testing',
-        'plone.app.contentlisting',
-        'plone.browserlayer',
-        'setuptools',
-        'zope.i18nmessageid'],
+        'setuptools'],
     entry_points="""
     # -*- Entry points: -*-
 
