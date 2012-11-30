@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-15 21:33+0000\n"
+"POT-Creation-Date: 2012-11-30 11:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abita.development\n"
 
-#: ./browser/templates/development-work.pt:49
-msgid "ALV"
-msgstr ""
-
-#: ./browser/templates/development-work.pt:48
-msgid "ALV 0%"
-msgstr ""
-
-#: ./browser/templates/development-work.pt:50
-msgid "ALV 23%"
-msgstr ""
-
-#: ./browser/templates/development-work.pt:62
+#: ./browser/templates/development-work.pt:65
 msgid "Charging Rate"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:17
+#: ./browser/templates/development-work.pt:20
 msgid "Date"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:18
+#: ./browser/templates/development-work.pt:21
 msgid "Description"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:20
+#: ./browser/templates/development-work.pt:23
 msgid "End"
 msgstr ""
 
@@ -53,7 +41,7 @@ msgstr ""
 msgid "Manage amount of development work."
 msgstr ""
 
-#: ./browser/templates/development-work.pt:21
+#: ./browser/templates/development-work.pt:24
 msgid "Minutes"
 msgstr ""
 
@@ -61,15 +49,15 @@ msgstr ""
 msgid "Rate per 10 minutes"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:19
+#: ./browser/templates/development-work.pt:22
 msgid "Start"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:43
+#: ./browser/templates/development-work.pt:46
 msgid "Total Charge"
 msgstr ""
 
-#: ./browser/templates/development-work.pt:41
+#: ./browser/templates/development-work.pt:44
 msgid "Total Time"
 msgstr ""
 
@@ -79,5 +67,17 @@ msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Unmanage amount of development work."
+msgstr ""
+
+#: ./browser/templates/development-work.pt:52
+msgid "VAT"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:53
+msgid "VAT ${vat}%"
+msgstr ""
+
+#: ./browser/templates/development-work.pt:51
+msgid "VAT 0%"
 msgstr ""
 

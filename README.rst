@@ -10,6 +10,7 @@ Change log
 
 - Added record: abita.development.vat. [taito]
 - Added testing integration to Travis CI. [taito]
+- Updated translations. [taito]
 
 0.2 (2012-10-16)
 ================
