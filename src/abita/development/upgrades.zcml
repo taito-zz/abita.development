@@ -1,0 +1,16 @@
+<configure
+  i18n_domain="abita.development"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns="http://namespaces.zope.org/zope">
+
+  <genericsetup:upgradeStep
+    description="Adds record: abita.development.vat."
+    destination="2"
+    handler="abita.development.upgrades.reimport_registry"
+    profile="abita.development:default"
+    sortkey="1"
+    source="1"
+    title="Reimport registry"
+    />
+
+</configure>

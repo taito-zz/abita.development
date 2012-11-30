@@ -85,6 +85,11 @@ class TestCase(IntegrationTestCase):
         from plone.browserlayer import utils
         self.failUnless(IAbitaDevelopmentLayer in utils.registered_layers())
 
+    def test_metadata__version(self):
+        setup = getToolByName(self.portal, 'portal_setup')
+        self.assertEqual(
+            setup.getVersionForProfile('profile-abita.development:default'), u'2')
+
     def get_record(self, name):
         from zope.component import getUtility
         from plone.registry.interfaces import IRegistry

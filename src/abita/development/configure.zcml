@@ -6,7 +6,9 @@
   xmlns:i18n="http://namespaces.zope.org/i18n"
   xmlns="http://namespaces.zope.org/zope">
 
-  <includeDependencies package="." />
+  <include package="five.grok" />
+  <include package=".browser" />
+  <include file="upgrades.zcml"/>
   <grok:grok package="." />
   <five:registerPackage package="." initialize=".initialize" />
 
@@ -28,6 +30,5 @@
     title="abita.development"
     />
 
-  <include package=".browser" />
 
 </configure>
