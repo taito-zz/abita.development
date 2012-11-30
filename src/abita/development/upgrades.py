@@ -7,11 +7,8 @@ logger = logging.getLogger(__name__)
 PROFILE_ID = 'profile-abita.development:default'
 
 
-# def reimport_registry(context, logger=None):
 def reimport_registry(context):
     """Reimport registry"""
-    # if logger is None:
-    #     logger = logging.getLogger(__name__)
     setup = getToolByName(context, 'portal_setup')
     logger.info('Reimporting registry.')
     setup.runImportStepFromProfile(

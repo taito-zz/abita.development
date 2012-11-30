@@ -96,37 +96,37 @@ class TestCase(IntegrationTestCase):
         registry = getUtility(IRegistry)
         return registry.records.get(name)
 
-    def test_registry_record__rate__field__instance(self):
+    def test_registry_record__abita_development_rate__field__instance(self):
         record = self.get_record('abita.development.rate')
         from plone.registry.field import Float
         self.assertIsInstance(record.field, Float)
 
-    def test_registry_record__rate__field__title(self):
+    def test_registry_record__abita_development_rate__field__title(self):
         record = self.get_record('abita.development.rate')
         self.assertEqual(record.field.title, u'Default Rate')
 
-    def test_registry_record__rate__field__description(self):
+    def test_registry_record__abita_development_rate__field__description(self):
         record = self.get_record('abita.development.rate')
         self.assertEqual(record.field.description, u'Default rate per 10 minutes.')
 
-    def test_registry_record__rate__value(self):
+    def test_registry_record__abita_development_rate__value(self):
         record = self.get_record('abita.development.rate')
         self.assertEqual(record.value, 7.0)
 
-    def test_registry_record__vat__field__instance(self):
+    def test_registry_record__abita_development_vat__field__instance(self):
         record = self.get_record('abita.development.vat')
         from plone.registry.field import Float
         self.assertIsInstance(record.field, Float)
 
-    def test_registry_record__vat__field__title(self):
+    def test_registry_record__abita_development_vat__field__title(self):
         record = self.get_record('abita.development.vat')
         self.assertEqual(record.field.title, u'VAT')
 
-    def test_registry_record__vat__field__description(self):
+    def test_registry_record__abita_development_vat__field__description(self):
         record = self.get_record('abita.development.vat')
         self.assertEqual(record.field.description, u'')
 
-    def test_registry_record__vat__value(self):
+    def test_registry_record__abita_development_vat__value(self):
         record = self.get_record('abita.development.vat')
         self.assertEqual(record.value, 23.0)
 
