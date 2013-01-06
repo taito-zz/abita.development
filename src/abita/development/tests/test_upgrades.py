@@ -22,4 +22,4 @@ class TestCase(IntegrationTestCase):
         reimport_registry(self.portal)
 
         self.assertEqual(registry['abita.development.rate'], 7.0)
-        self.assertEqual(registry['abita.development.vat'], 23.0)
+        self.assertEqual(registry['abita.development.vat'], 24.0)

@@ -65,9 +65,9 @@ Update with numerical value::
     True
     >>> '1480.00 EUR' in browser.contents
     True
-    >>> '340.40 EUR' in browser.contents
+    >>> '355.20 EUR' in browser.contents
     True
-    >>> '1820.40 EUR' in browser.contents
+    >>> '1835.20 EUR' in browser.contents
     True
     >>> '5.0 EUR / 10 min' in browser.contents
     True
@@ -113,9 +113,9 @@ Go to Folder::
     True
     >>> '1480.00 EUR' in browser.contents
     True
-    >>> '340.40 EUR' in browser.contents
+    >>> '355.20 EUR' in browser.contents
     True
-    >>> '1820.40 EUR' in browser.contents
+    >>> '1835.20 EUR' in browser.contents
     True
     >>> '5.0 EUR / 10 min' in browser.contents
     True

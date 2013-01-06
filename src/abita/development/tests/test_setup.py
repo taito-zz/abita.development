@@ -128,7 +128,7 @@ class TestCase(IntegrationTestCase):
 
     def test_registry_record__abita_development_vat__value(self):
         record = self.get_record('abita.development.vat')
-        self.assertEqual(record.value, 23.0)
+        self.assertEqual(record.value, 24.0)
 
     def test_uninstall__package(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
