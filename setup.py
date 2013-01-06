@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='abita.development',
-    version='0.3',
+    version='0.3.1',
     description="",
     long_description=open("README.rst").read(),
     classifiers=[
@@ -24,6 +24,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'Products.CMFPlone',
         'five.grok',
         'five.pt',
         'hexagonit.testing',
