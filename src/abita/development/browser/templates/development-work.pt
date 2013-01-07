@@ -49,15 +49,15 @@
               <thead>
                 <tr>
                   <th i18n:translate="">VAT 0%</th>
-                  <th i18n:translate="">VAT</th>
-                  <th i18n:translate="">VAT <tal:vat i18n:name="vat">23</tal:vat>%</th>
+                  <th i18n:translate="" tal:condition="view/vat">VAT</th>
+                  <th i18n:translate="" tal:condition="view/vat">VAT <tal:vat i18n:name="vat" tal:replace="view/vat">23</tal:vat>%</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td tal:content="view/total_without_vat" />
-                  <td tal:content="view/total_vat" />
-                  <td tal:content="view/total_with_vat" />
+                  <td tal:condition="view/vat" tal:content="view/total_vat" />
+                  <td tal:condition="view/vat" tal:content="view/total_with_vat" />
                 </tr>
               </tbody>
             </table>
