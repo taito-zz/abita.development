@@ -1,7 +1,7 @@
 <div
   id="rate-per-ten-minutes"
   i18n:domain="abita.development"
-  tal:condition="viewlet/available">
+  tal:condition="view/available">
   <form
     method="post"
     tal:attributes="action context/plone_context_state/current_base_url">
@@ -11,7 +11,7 @@
       name="rate"
       type="text"
       size="4"
-      tal:attributes="value viewlet/rate"
+      tal:attributes="value view/rate"
       />
     <input
       id="standalone"

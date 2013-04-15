@@ -9,7 +9,7 @@ setup(
     long_description=open("README.rst").read(),
     classifiers=[
         "Framework :: Plone",
-        "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3",
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7"],
@@ -25,8 +25,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'Products.CMFPlone',
-        'five.grok',
-        'five.pt',
         'setuptools'],
     extras_require={'test': ['hexagonit.testing']},
     entry_points="""

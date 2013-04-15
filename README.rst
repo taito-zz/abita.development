@@ -5,10 +5,11 @@ abita.development
 Change log
 ----------
 
-0.4 (2013-04-15)
+0.4 (2013-04-xx)
 ================
 
 - Moved test packages to extras_require. [taito]
+- Removed dependency from five.grok. [taito]
 
 0.3.2 (2013-01-07)
 ==================
