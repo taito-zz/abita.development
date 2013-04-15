@@ -4,8 +4,8 @@ from setuptools import setup
 
 setup(
     name='abita.development',
-    version='0.3.2',
-    description="",
+    version='0.4',
+    description="Manages develpment works.",
     long_description=open("README.rst").read(),
     classifiers=[
         "Framework :: Plone",

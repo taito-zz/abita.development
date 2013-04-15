@@ -5,7 +5,7 @@ abita.development
 Change log
 ----------
 
-0.4 (2013-04-xx)
+0.4 (2013-04-15)
 ================
 
 - Moved test packages to extras_require. [taito]
