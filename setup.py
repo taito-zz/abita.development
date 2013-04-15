@@ -27,8 +27,8 @@ setup(
         'Products.CMFPlone',
         'five.grok',
         'five.pt',
-        'hexagonit.testing',
         'setuptools'],
+    extras_require={'test': ['hexagonit.testing']},
     entry_points="""
     # -*- Entry points: -*-
 
