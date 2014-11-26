@@ -1,15 +1,10 @@
-from Products.ATContentTypes.interfaces.folder import IATFolder
-from abita.development.interfaces import IRate
-from five import grok
+from collective.base.adapter import Adapter
 from plone.registry.interfaces import IRegistry
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
 
 
-class Rate(grok.Adapter):
-
-    grok.provides(IRate)
-    grok.context(IATFolder)
+class Rate(Adapter):
 
     def __call__(self):
         registry = getUtility(IRegistry)

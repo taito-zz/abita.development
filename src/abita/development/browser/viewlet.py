@@ -1,25 +1,16 @@
-from Products.ATContentTypes.interfaces.folder import IATFolder
-from abita.development.browser.interfaces import IAbitaDevelopmentLayer
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from abita.development.browser.interfaces import IRatePerTenMinutesViewlet
 from abita.development.interfaces import IManageDevWork
 from abita.development.interfaces import IRate
-from five import grok
-from plone.app.layout.globals.interfaces import IViewView
-from plone.app.layout.viewlets.interfaces import IAboveContentTitle
+from collective.base.viewlet import Viewlet
 from zope.annotation.interfaces import IAnnotations
+from zope.interface import implements
 
 
-grok.templatedir('viewlets')
-
-
-class RatePerTenMinutesViewlet(grok.Viewlet):
+class RatePerTenMinutesViewlet(Viewlet):
     """Rate per ten minutes Viewlet Class."""
-    grok.context(IATFolder)
-    grok.layer(IAbitaDevelopmentLayer)
-    grok.name('rate-per-ten-minutes')
-    grok.require('cmf.ManagePortal')
-    grok.template('rate')
-    grok.view(IViewView)
-    grok.viewletmanager(IAboveContentTitle)
+    implements(IRatePerTenMinutesViewlet)
+    index = ViewPageTemplateFile('viewlets/rate.pt')
 
     def update(self):
         form = self.request.form
@@ -32,8 +23,9 @@ class RatePerTenMinutesViewlet(grok.Viewlet):
                 pass
 
     def available(self):
-        """Return True if the context provides IManageDevWork interface."""
+        """Return True if the context provides IManageDevWork interface"""
         return IManageDevWork.providedBy(self.context)
 
     def rate(self):
+        """Return rate"""
         return IRate(self.context)()

@@ -1,29 +1,26 @@
 from Acquisition import aq_inner
 from Products.ATContentTypes.interfaces.event import IATEvent
-from Products.ATContentTypes.interfaces.folder import IATFolder
 from Products.CMFCore.utils import getToolByName
-from abita.development.browser.interfaces import IAbitaDevelopmentLayer
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from abita.development.browser.interfaces import IDevelopmentWorkView
 from abita.development.interfaces import IRate
+from collective.base.view import BaseView
 from datetime import timedelta
 from decimal import Decimal
 from decimal import ROUND_HALF_UP
-from five import grok
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.memoize.instance import memoize
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
+from zope.interface import implements
 
 
-grok.templatedir('templates')
+class DevelopmentWorkView(BaseView):
+    implements(IDevelopmentWorkView)
+    template = ViewPageTemplateFile('views/development-work.pt')
 
-
-class DevelopmentWorkView(grok.View):
-
-    grok.context(IATFolder)
-    grok.layer(IAbitaDevelopmentLayer)
-    grok.name('development-work')
-    grok.require('cmf.ModifyPortalContent')
-    grok.template('development-work')
+    def __call__(self):
+        return self.template()
 
     def title(self):
         return self.context.Title()

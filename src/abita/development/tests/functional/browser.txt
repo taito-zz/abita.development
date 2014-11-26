@@ -7,13 +7,13 @@ Go to Folder::
     >>> browser.open(folder_url)
     >>> print browser.bycss('.documentFirstHeading')
     --- 1 ---
-    <h1 id="parent-fieldname-title" class="documentFirstHeading kssattr-atfieldname-title kssattr-templateId-kss_generic_macros kssattr-macro-title-field-view">
+    <h1 id="parent-fieldname-title" class="documentFirstHeading">
     Folder
     </h1>
 
     >>> print browser.bycss('.documentDescription')
     --- 1 ---
-    <div id="parent-fieldname-description" class="documentDescription kssattr-atfieldname-description kssattr-templateId-kss_generic_macros kssattr-macro-description-field-view">
+    <div id="parent-fieldname-description" class="documentDescription">
     Description of Folder
     </div>
 

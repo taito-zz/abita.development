@@ -39,4 +39,24 @@
     permission="cmf.ManagePortal"
     />
 
+  <!-- View -->
+  <browser:page
+    class=".view.DevelopmentWorkView"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    name="development-work"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <!-- Viwlets -->
+  <browser:viewlet
+    class="abita.development.browser.viewlet.RatePerTenMinutesViewlet"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    interface="plone.app.layout.globals.interfaces.IViewView"
+    layer=".interfaces.IAbitaDevelopmentLayer"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+    name="rate-per-ten-minutes"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>

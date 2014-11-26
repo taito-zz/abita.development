@@ -1,0 +1,11 @@
+<configure
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns="http://namespaces.zope.org/zope">
+
+  <adapter
+    factory=".adapter.Rate"
+    for="Products.ATContentTypes.interfaces.folder.IATFolder"
+    provides="abita.development.interfaces.IRate"
+    />
+
+</configure>
