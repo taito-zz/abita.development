@@ -2,6 +2,9 @@
 abita.development
 =================
 
+.. image:: https://secure.travis-ci.org/taito/abita.development.png
+    :target: http://travis-ci.org/taito/abita.development
+
 Change log
 ----------
 
