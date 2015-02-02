@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='abita.development',
-    version='0.5',
+    version='0.5.1',
     description="",
     long_description=open("README.rst").read(),
     classifiers=[
