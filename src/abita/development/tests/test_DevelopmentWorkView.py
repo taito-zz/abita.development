@@ -14,7 +14,7 @@ class TestDevelopmentWorkView(IntegrationTestCase):
 
     def createFolder(self):
         folder = self.portal[
-            self.portal.invokeFactory('Folder', 'folder')
+            self.portal.invokeFactory('Folder', 'folder1')
         ]
         folder.reindexObject()
         return folder
